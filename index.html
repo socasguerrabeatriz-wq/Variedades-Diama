@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Variedades de la Finca Diama · Viticultura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Cuaderno de campo de ampelografía: picón, papel crudo, menta de la presentación de la visita, oliva y los colores reales de las bayas */
+:root{
+  color-scheme:light;
+  --dark:#24211e; --cream:#f5f1e8; --cream2:#ebe5d8; --mint:#c9f0dc; --olive:#5e6b1f;
+  --ink:#24211e; --muted:#6f685e; --line:#ddd5c5; --card:#fffdf8;
+  --blanca:#cfc85e; --tinta:#4a2550; --accent:#b4532a;
+  --shadow:0 8px 24px rgba(36,33,30,.12); --r:14px;
+  --fd:"Libre Baskerville",Georgia,serif; --fb:"Nunito Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--fb);font-size:17px;line-height:1.6}
+h1,h2,h3,h4{font-family:var(--fd);line-height:1.15;margin:0 0 .45em;text-wrap:balance}
+h2{font-size:clamp(1.6rem,3.6vw,2.4rem)}
+h3{font-size:1.15rem}
+p{margin:.4em 0 .9em}
+b,strong{color:var(--olive)}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+img{max-width:100%}
+svg{max-width:100%;height:auto;display:block}
+svg text{font-family:var(--fb)}
+
+#topnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--dark)}
+#topnav .in{display:flex;gap:4px;overflow-x:auto;padding:8px 14px;scrollbar-width:none;max-width:1200px;margin:auto}
+#topnav .in::-webkit-scrollbar{display:none}
+#topnav a{flex:none;text-decoration:none;color:#d8d1c4;font-weight:700;font-size:.85rem;padding:6px 12px;border-radius:999px}
+#topnav a:hover{color:#fff}
+#topnav a.on{background:var(--mint);color:var(--dark)}
+#prog{height:3px;background:var(--mint);width:0}
+
+.sec{padding:60px 16px}
+.sec.dark{background:var(--dark);color:var(--cream)}
+.sec.dark b{color:var(--mint)}
+.sec.alt{background:var(--cream2)}
+.wrap{max-width:1120px;margin:auto}
+.eyebrow{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--olive);margin-bottom:10px}
+.sec.dark .eyebrow{color:var(--dark);background:var(--mint);padding:4px 12px}
+.lead{font-size:1.07rem;max-width:780px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.grid2>*{min-width:0}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 20px;color:var(--ink)}
+.pill{display:inline-block;font-size:.76rem;font-weight:800;padding:2px 10px;border-radius:999px;margin:2px 4px 2px 0;background:var(--mint);color:var(--dark)}
+.pill.b{background:#f0ecc0;color:#5f5a12}
+.pill.t{background:#e6d6ec;color:#4a2550}
+.pill.o{background:#f6e2d6;color:#8f3d1c}
+.btn{border:0;background:var(--dark);color:var(--cream);font-weight:800;padding:10px 18px;border-radius:999px}
+.btn.m{background:var(--mint);color:var(--dark)}
+.btn.o{background:var(--olive);color:#fff}
+.btn.ghost{background:transparent;border:2px solid currentColor;color:inherit}
+.btn.sm{padding:6px 14px;font-size:.9rem}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.seg button{border:2px solid var(--dark);background:var(--card);color:var(--dark);font-weight:800;border-radius:999px;padding:5px 12px;font-size:.88rem}
+.seg button.on{background:var(--dark);color:var(--cream)}
+select{font:inherit;font-weight:700;padding:8px 10px;border-radius:10px;border:2px solid var(--line);background:var(--card);width:100%}
+.note{border-left:5px solid var(--olive);background:#eef0dc;padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;color:var(--ink)}
+.credit{font-size:.78rem;color:var(--muted)}
+.sec.dark .credit{color:#b8b0a3}
+.ph{background:#e6dfd1;border-radius:12px;overflow:hidden;position:relative}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph.contain img{object-fit:contain;background:#fff}
+.ph .off{position:absolute;inset:0;display:none;place-items:center;text-align:center;font-size:.8rem;color:var(--muted);padding:8px}
+.ph.err img{display:none}.ph.err .off{display:grid}
+
+/* portada */
+.centro{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.centro .logo{height:80px;background:var(--cream);border-radius:12px;padding:6px;flex:none}
+.centro .logo img{height:100%;width:auto;display:block}
+.centro .nm{font-weight:800;line-height:1.25}
+.centro .nm small{display:block;color:#b8b0a3;font-weight:700}
+.hero h1{font-size:clamp(2.1rem,5vw,3.6rem);color:#fff}
+.hero h1 em{font-style:italic;color:var(--mint)}
+.waffle{display:grid;grid-template-columns:repeat(33,1fr);gap:2px}
+.waffle i{display:block;aspect-ratio:1;border-radius:2px;transition:opacity .3s,transform .3s}
+.waffle i.dim{opacity:.15}
+.waffle i.q{background:repeating-linear-gradient(45deg,#c9f0dc,#c9f0dc 2px,#24211e 2px,#24211e 4px)!important}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.legend button{border:0;background:#34302b;color:var(--cream);border-radius:999px;padding:4px 10px 4px 6px;font-weight:700;font-size:.82rem;display:flex;align-items:center;gap:6px}
+.legend button.on{background:var(--mint);color:var(--dark)}
+.legend b{color:inherit;font-variant-numeric:tabular-nums}
+.legend s{display:inline-block;width:12px;height:12px;border-radius:3px;text-decoration:none}
+
+/* fichas */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
+.vcard{border:0;text-align:left;background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:0;overflow:hidden;color:var(--ink);transition:transform .2s;display:flex;flex-direction:column}
+.vcard:hover{transform:translateY(-4px)}
+.vcard.on{outline:3px solid var(--olive)}
+.vcard .ph{border-radius:0;aspect-ratio:4/5}
+.vcard div.t{padding:10px 12px}
+.vcard h4{margin:0;font-size:1rem}
+.vcard small{color:var(--muted);font-weight:700}
+.ficha{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;margin-top:20px}
+@media (max-width:860px){.ficha{grid-template-columns:1fr}}
+.gal .main{aspect-ratio:4/5;max-height:560px}
+.gal .main>.ph{height:100%}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.thumbs button{border:2px solid transparent;padding:0;background:none;border-radius:10px;overflow:hidden;position:relative}
+.thumbs button.on{border-color:var(--olive)}
+.thumbs .ph{aspect-ratio:1;border-radius:8px}
+.thumbs span{position:absolute;left:4px;bottom:4px;background:rgba(36,33,30,.8);color:#fff;font-size:.7rem;font-weight:800;padding:1px 6px;border-radius:6px}
+dl.traits{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:.95rem}
+dl.traits dt{font-weight:800;color:var(--olive)}
+dl.traits dd{margin:0}
+.tscroll{overflow-x:auto}
+table.t{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--card)}
+.t th{background:var(--dark);color:var(--cream);padding:8px 10px;text-align:left}
+.t td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.t td:first-child{font-weight:800;color:var(--olive);white-space:nowrap}
+
+/* clave */
+.key .step{font-family:var(--fd);font-size:1.3rem;margin:6px 0 14px}
+.key .opts{display:grid;gap:10px}
+.key .opts button{border:2px solid var(--dark);background:var(--card);border-radius:12px;padding:12px 16px;text-align:left;font-weight:700;font-size:1rem;color:var(--ink)}
+.key .opts button:hover{background:var(--mint)}
+.trail{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.trail span{font-size:.78rem;font-weight:800;background:var(--cream2);border-radius:999px;padding:2px 10px}
+
+/* juego de fotos */
+.pq .ph{aspect-ratio:4/3;max-height:380px}
+.pq .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.pq .opts button{border:2px solid var(--line);background:var(--card);border-radius:10px;padding:10px;font-weight:800;color:var(--ink)}
+.pq .opts button.ok{background:#e3f1e7;border-color:var(--olive)}
+.pq .opts button.ko{background:#f8e0d6;border-color:var(--accent)}
+
+/* campo */
+.checks{display:grid;gap:8px}
+.checks label{display:flex;gap:10px;align-items:flex-start;background:#34302b;border-radius:10px;padding:10px 12px;font-weight:700;cursor:pointer}
+.checks input{margin-top:5px;accent-color:var(--mint);width:18px;height:18px;flex:none}
+.checks label.done{opacity:.55;text-decoration:line-through}
+
+/* quiz y glosario */
+.quiz{max-width:760px;margin:auto}
+.qbar{height:8px;background:var(--cream2);border-radius:4px;overflow:hidden;margin-bottom:16px}
+.qbar div{height:100%;background:var(--olive);width:0;transition:width .4s}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:10px;padding:12px 16px;margin:8px 0;font-size:1rem;font-weight:700;color:var(--ink)}
+.opt:hover:not(:disabled){border-color:var(--dark)}
+.opt.ok{background:#e3f1e7;border-color:var(--olive)}
+.opt.ko{background:#f8e0d6;border-color:var(--accent)}
+.fb{margin-top:10px;padding:12px 14px;border-radius:10px;display:none}
+.fb.show{display:block}
+.score{font-family:var(--fd);font-size:3rem;text-align:center;color:var(--olive)}
+.flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.flip{perspective:900px;height:150px;cursor:pointer;background:none;border:0;padding:0}
+.flip .inn{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .inn{transform:rotateY(180deg)}
+.flip .fc,.flip .bc{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:grid;place-items:center;padding:12px;text-align:center}
+.flip .fc{background:var(--dark);color:var(--mint);font-family:var(--fd);font-size:1.15rem}
+.flip .bc{background:var(--card);border:1px solid var(--line);transform:rotateY(180deg);font-size:.88rem;color:var(--ink)}
+footer{text-align:center;padding:30px 16px 40px;background:var(--dark);color:#b8b0a3;font-size:.85rem}
+footer a{color:var(--mint)}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<nav id="topnav" aria-label="Apartados">
+  <div class="in">
+    <a href="#inicio">Inicio</a>
+    <a href="#fichas">Fichas</a>
+    <a href="#bayas">Bayas a escala</a>
+    <a href="#comparador">Comparador</a>
+    <a href="#clave">Clave</a>
+    <a href="#fotos">¿Qué variedad es?</a>
+    <a href="#campo">En la finca</a>
+    <a href="#quiz">Autoevaluación</a>
+    <a href="#glosario">Glosario</a>
+  </div>
+  <div id="prog"></div>
+</nav>
+
+<!-- ============ PORTADA ============ -->
+<section id="inicio" class="sec dark hero">
+  <div class="wrap grid2" style="align-items:center">
+    <div>
+      <div class="centro"><div class="logo"><img src="data:image/webp;base64,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" alt="Logotipo del CIFP Zonzamas"></div><div class="nm">CIFP Zonzamas<small>Curso 2026/27 · Viticultura</small></div></div>
+      <span class="eyebrow">Ampelografía · Visita a la Finca Diama</span>
+      <h1>Ocho variedades, <em>una finca</em> en La Geria</h1>
+      <p class="lead">Antes de la visita a la <b>Finca Diama</b>, aprende a reconocer sus variedades de vid: cómo son la hoja, el racimo y la baya, cuándo brotan y enveran, y qué papel tienen en Lanzarote. Fotos y caracteres del catálogo <b>Vitis Canarias</b>.</p>
+      <div class="row"><a class="btn m" href="#fichas" style="text-decoration:none">Ver las fichas →</a><a class="btn ghost sm" href="#fotos" style="text-decoration:none;color:#f5f1e8">Jugar a identificar</a></div>
+    </div>
+    <div>
+      <div class="card" style="background:#2e2a26;border-color:#3d3833;color:var(--cream)">
+        <div class="row" style="justify-content:space-between;align-items:baseline"><h3 style="margin:0;color:#fff">Las cepas de la finca</h3><span class="credit">1 cuadro = 1 cepa</span></div>
+        <div class="waffle" id="waffle" style="margin-top:10px" role="img" aria-label="Gráfico de cuadros con las 671 cepas de la finca por variedad"></div>
+        <div class="legend" id="legend"></div>
+        <p id="wTxt" style="margin:.8em 0 0;font-size:.92rem"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FICHAS ============ -->
+<section id="fichas" class="sec">
+  <div class="wrap">
+    <span class="eyebrow">01 · Fichas ampelográficas</span>
+    <h2>Conoce cada variedad</h2>
+    <p class="lead">Pulsa una variedad para abrir su ficha. Las fotos muestran el <b>racimo</b>, la <b>baya</b>, la <b>hoja adulta</b> y la <b>sumidad</b> (la punta del pámpano).</p>
+    <div class="seg" id="colSeg"><button data-c="all" class="on">Todas</button><button data-c="b">🟡 Blancas</button><button data-c="t">🟣 Tintas</button></div>
+    <div class="cards" id="cards"></div>
+    <div class="ficha" id="ficha"></div>
+  </div>
+</section>
+
+<!-- ============ BAYAS ============ -->
+<section id="bayas" class="sec alt">
+  <div class="wrap">
+    <span class="eyebrow">02 · Bayas a escala</span>
+    <h2>¿Cuánto mide cada uva?</h2>
+    <p class="lead">Longitud y anchura aproximadas de la baya según las fichas, dibujadas a la misma escala. Pasa el ratón o toca una baya.</p>
+    <div class="card"><svg id="berrySvg" viewBox="0 0 900 260" role="img" aria-label="Bayas de cada variedad dibujadas a escala"></svg><p id="berryTxt" style="margin:.4em 0 0;font-weight:700"></p></div>
+    <div class="grid2" style="margin-top:20px">
+      <div class="card">
+        <h3>Brotación y envero</h3>
+        <p style="font-size:.92rem;margin-top:0">Época relativa según las fichas: las variedades <b>tardías</b> brotan o enveran más tarde que las de época <b>media</b>.</p>
+        <div class="tscroll"><svg id="feno" viewBox="0 0 520 370" role="img" aria-label="Época de brotación y envero de cada variedad"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Forma del racimo</h3>
+        <p style="font-size:.92rem;margin-top:0">Cónico o piramidal, con alas, más o menos compacto. Elige una variedad.</p>
+        <select id="rSel" aria-label="Variedad"></select>
+        <svg id="rSvg" viewBox="0 0 300 300" role="img" aria-label="Esquema del racimo" style="margin-top:8px"></svg>
+        <p id="rTxt" style="margin:0;font-weight:700"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARADOR ============ -->
+<section id="comparador" class="sec">
+  <div class="wrap">
+    <span class="eyebrow">03 · Comparador</span>
+    <h2>Frente a frente</h2>
+    <p class="lead">Elige dos variedades y compáralas carácter a carácter. Prueba con <b>Moscatel de Alejandría</b> y <b>Moscatel negro</b>, o con <b>Malvasía volcánica</b> y <b>Listán blanco</b>.</p>
+    <div class="grid2" style="gap:14px"><select id="cA" aria-label="Primera variedad"></select><select id="cB" aria-label="Segunda variedad"></select></div>
+    <div class="grid2" style="gap:14px;margin-top:14px" id="cPhotos"></div>
+    <div class="tscroll" style="margin-top:14px"><table class="t" id="cTable"></table></div>
+  </div>
+</section>
+
+<!-- ============ CLAVE ============ -->
+<section id="clave" class="sec alt">
+  <div class="wrap grid2">
+    <div>
+      <span class="eyebrow">04 · Clave de identificación</span>
+      <h2>¿Qué cepa tengo delante?</h2>
+      <p class="lead">Una clave dicotómica sencilla para las ocho variedades de la finca: responde mirando la cepa y llegarás a su nombre.</p>
+      <div class="note">Es una clave didáctica, pensada solo para estas ocho variedades. En campo, combina siempre varios caracteres: hoja, racimo, baya y sumidad.</div>
+    </div>
+    <div class="card key" id="key"></div>
+  </div>
+</section>
+
+<!-- ============ FOTOS ============ -->
+<section id="fotos" class="sec">
+  <div class="wrap grid2">
+    <div>
+      <span class="eyebrow">05 · Juego</span>
+      <h2>¿Qué variedad es?</h2>
+      <p class="lead">10 fotos al azar del catálogo: racimos, bayas, hojas y sumidades. Elige la variedad correcta.</p>
+      <div class="seg" id="pqMode"><button data-m="all" class="on">Todo mezclado</button><button data-m="racimo">Solo racimos</button><button data-m="baya">Solo bayas</button><button data-m="hoja">Solo hojas</button></div>
+      <p class="credit">Fotos: Vitis Canarias (Gobierno de Canarias). Necesitan conexión a internet.</p>
+    </div>
+    <div class="card pq" id="pq"></div>
+  </div>
+</section>
+
+<!-- ============ CAMPO ============ -->
+<section id="campo" class="sec dark">
+  <div class="wrap grid2">
+    <div>
+      <span class="eyebrow">06 · Cuaderno de campo</span>
+      <h2 style="color:#fff">Tareas para el martes en la Finca Diama</h2>
+      <p class="lead">Llévalo en el móvil durante la visita y marca cada tarea al completarla. Las marcas se guardan solo en tu dispositivo.</p>
+      <div class="big" style="font-family:var(--fd);font-size:2.4rem;color:var(--mint)" id="ckCount">0 / 8</div>
+    </div>
+    <div class="checks" id="checks"></div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz" class="sec alt">
+  <div class="wrap">
+    <span class="eyebrow">07 · Autoevaluación</span>
+    <h2>¿Las reconocerías?</h2>
+    <div class="quiz card" id="quizBox"></div>
+  </div>
+</section>
+
+<!-- ============ GLOSARIO ============ -->
+<section id="glosario" class="sec">
+  <div class="wrap">
+    <span class="eyebrow">08 · Glosario</span>
+    <h2>Vocabulario de ampelografía</h2>
+    <p>Pulsa cada tarjeta para darle la vuelta.</p>
+    <div class="flips" id="flips"></div>
+  </div>
+</section>
+
+<footer><img src="data:image/webp;base64,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" alt="CIFP Zonzamas" style="height:56px;width:auto;display:block;margin:0 auto 10px;background:#f5f1e8;border-radius:10px;padding:5px"><b style="color:#fff">CIFP Zonzamas · Curso 2026/27</b><br>Lección interactiva · Módulo de Viticultura · Variedades de la Finca Diama (La Geria).<br>Fotografías y caracteres ampelográficos: <a href="https://www.vitiscanarias.com" target="_blank" rel="noopener">Vitis Canarias · Canary Islands Vitis Database</a> (© Gobierno de Canarias). Recuento de cepas: cartel de la Finca Diama.</footer>
+
+<script>
+(function(){
+"use strict";
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+function segInit(sel,cb){$$(sel+' button').forEach(b=>b.addEventListener('click',()=>{$$(sel+' button').forEach(x=>x.classList.toggle('on',x===b));cb(b)}))}
+const IMG='https://server.vitiscanarias.com/Uploads/muestras/';
+const FICHA='https://www.vitiscanarias.com/muestra/';
+const ph=(src,alt,cls='')=>`<div class="ph ${cls}"><img src="${src}" alt="${alt}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('err')"><div class="off">📷 Foto no disponible<br>(necesita conexión)</div></div>`;
+
+/* ---------- datos ---------- */
+const V=[
+ {k:'malv',n:'Malvasía volcánica',c:'b',cep:175,col:'#d8c24a',id:44,
+  img:{racimo:'5dd42769-c3b2-4c18-9608-875d0980e288',baya:'2d530808-48c5-4504-af8e-d77b2d086a29',hoja:'e0813a55-2a34-4576-b8da-ac3378e97f66',sumidad:'5aeb59c4-5305-4871-bce1-7d7528554aa0'},
+  brot:'media',env:'media',hoja:'Mediana, orbicular, 5 lóbulos; seno peciolar en lira, poco abierto',racimo:'Piramidal, 2–3 alas, largo, compacidad media',rf:'pir',alas:2.5,comp:.6,
+  baya:'Esférica, ~16 mm, verde-amarilla; pulpa blanda, muy jugosa',L:16,W:16,bc:'#d6d36a',sabor:'Particular',porte:'Horizontal; pámpano verde con rayas rojas',
+  sin:'—',
+  notas:['Es la variedad mayoritaria en Lanzarote; no se le conocen sinonimias fuera de Canarias.','Las técnicas moleculares apuntan a que es un cruce de <b>Malvasía aromática × Marmajuelo</b>.','A diferencia de la Malvasía aromática, admite <b>poda corta</b> (3–4 yemas): sus primeras yemas son fértiles.','En Lanzarote se han encontrado plantas <b>libres de virus</b>, útiles para la selección sanitaria.','La isla destaca por sus <b>malvasías secas</b>, frente a la tradición dulce de La Palma y Tenerife.'],
+  finca:'175 cepas. La variedad emblemática de la DO Lanzarote, en hoyos sobre picón y a pie franco.'},
+ {k:'mosca',n:'Moscatel de Alejandría',c:'b',cep:286,col:'#e8dc8a',id:46,
+  img:{racimo:'3c12e4b6-71b0-4837-8516-3f4d589ada78',baya:'7e86cddb-b857-4b65-bdeb-9d89e3a27500',hoja:'5b63db96-20a3-4e82-b1c0-fc157b5c59e9',sumidad:'8f612881-5f4b-4b1f-9f3b-11df07ea8db2'},
+  brot:'tardía',env:'tardía',hoja:'Pequeña, pentagonal, 5 lóbulos; seno peciolar en V, poco abierto',racimo:'Cónico, 1 ala, longitud y compacidad media',rf:'con',alas:1,comp:.6,
+  baya:'Elíptica, ~19 × 15 mm, verde-amarilla; pulpa dura, sabor moscatel',L:19,W:15,bc:'#d9d775',sabor:'Moscatel',porte:'Semierguido; pámpano verde',
+  sin:'Moscatel gordo, Moscatel de Málaga… (muy difundida en el mundo)',
+  notas:['Cultivada en todas las islas; destaca su concentración en el Monte Lentiscal (Gran Canaria) y en <b>Lanzarote</b>.','Suele aparecer mezclada con otras variedades o en <b>parrales</b> junto a bodegas y viviendas.','Producción <b>alta</b> (cerca del 92 % de la de Listán negro); no exige poda larga.','Brotación poco homogénea: a veces hacen falta <b>varias pasadas de vendimia</b>.','En Lanzarote sobrevive una única planta de <b>Moscatel de grano menudo</b>, testigo de la diversidad anterior a la llegada del oídio (1852).'],
+  finca:'286 cepas: la más abundante. Necesita más agua: se planta en chabocos y zanjas o junto a ellos.'},
+ {k:'moscn',n:'Moscatel negro',c:'t',cep:4,col:'#7b3a6e',id:48,
+  img:{racimo:'a9fb7cb7-d98b-4f18-a7f7-ebde9c59f9c9',baya:'cce183e7-0aef-4aea-8cc9-e29bf66d44fc',hoja:'1295070d-307d-4a39-a590-4874f4d24c9a',sumidad:'b346603b-f746-41d1-a265-b0877b4c1f34'},
+  brot:'tardía',env:'media',hoja:'Grande, cuneiforme, 5 lóbulos; seno peciolar en V, abierto',racimo:'Cónico, 2 alas, mediano, compacidad media',rf:'con',alas:2,comp:.6,
+  baya:'Elíptica, ~24 × 20 mm, roja-violeta oscura; pulpa dura, sabor moscatel',L:24,W:20,bc:'#5b2350',sabor:'Moscatel',porte:'Semierguido; pámpano verde',
+  sin:'Moscatel de Hamburgo',
+  notas:['Su vocación principal parece ser la <b>uva de mesa</b>.','La muestra del catálogo procede del Monte Lentiscal (Gran Canaria), donde se cultiva mezclada con otras variedades.','Ya en 1878 se citaban en Lanzarote moscateles de uva blanca y morada.','La baya es la más grande de las ocho variedades de la finca.'],
+  finca:'4 cepas. Muy minoritaria y autorizada en la DO Lanzarote: valiosa para conservar la diversidad.'},
+ {k:'listn',n:'Listán negro',c:'t',cep:140,col:'#3b2a55',id:39,
+  img:{racimo:'28938480-c6dd-48e7-a1f4-51ef7f170a65',baya:'9ccdc437-b700-4d17-8e90-638b48b23bbf',hoja:'9ccc9ce9-2b2c-492a-a460-ab98cf2edb97',sumidad:'89519caa-fd05-43ef-8442-a0ce1b53fd3c'},
+  brot:'media',env:'media',hoja:'Mediana, pentagonal, 5 lóbulos; seno peciolar en V, ligeramente superpuesto',racimo:'Cónico, hasta 2 alas, largo, compacto',rf:'con',alas:2,comp:.9,
+  baya:'Esférica, ~17 mm (achatada), azul-negra; pulpa blanda, muy jugosa',L:17,W:18,bc:'#2c2442',sabor:'Sin sabor particular',porte:'Horizontal; pámpano verde con rayas rojas',
+  sin:'Almuñeco',
+  notas:['La variedad tinta <b>más extendida de Canarias</b> (salvo en La Palma, donde domina la Negramoll).','<b>Rústica</b>, se adapta a suelos y climas muy diversos, se comporta bien frente a plagas y enfermedades y produce bien.','Su punto débil es la <b>compacidad del racimo</b>: en suelos fértiles o con exceso de agua sufre podredumbres.','Vocación para <b>vinos jóvenes</b>; con maceraciones más largas da vinos para crianza.'],
+  finca:'140 cepas: la principal tinta de la finca y de Canarias.'},
+ {k:'listb',n:'Listán blanco',c:'b',cep:60,col:'#a8b84a',id:36,
+  img:{racimo:'b8caa5e1-dae9-4a9c-a7b9-bc200350c6e5',baya:'8266f1e0-5cd6-4fa8-bf20-e96fd27fc854',hoja:'6439d26b-cd42-4a6c-9e66-f2b42b49ade8',sumidad:'bcd40bb0-9d9b-45d2-9394-1e2e100ade96'},
+  brot:'media',env:'media',hoja:'Grande, pentagonal, 5 lóbulos; nervios rojos hasta la 1.ª bifurcación; seno en V',racimo:'Cónico, 2–3 alas, muy largo, compacidad media, pedúnculo largo',rf:'con',alas:2.5,comp:.6,
+  baya:'Esférica, ~17 mm, verde-amarilla; pulpa blanda, muy jugosa',L:17,W:17,bc:'#cfd27a',sabor:'Sin sabor particular',porte:'Semierguido; zarcillos muy largos',
+  sin:'Palomino fino, Blanco Jerez…',
+  notas:['La variedad <b>más extendida</b> de la viticultura canaria, en todas las altitudes.','Buen comportamiento agronómico: <b>producciones altas</b>, poca sensibilidad a enfermedades y gran tolerancia a los <b>golpes de calor</b>.','En zonas frías da vinos más aromáticos y ácidos; también hay elaboraciones dulces.','En Canarias se le llama simplemente Listán blanco.'],
+  finca:'60 cepas. Productiva y bien adaptada al cultivo en hoyos.'},
+ {k:'brevb',n:'Breval blanco',c:'b',cep:2,col:'#e2d9a8',id:23,
+  img:{racimo:'d5231ca5-9c33-416a-aaad-eda6634bf3f8',baya:'a1653bc6-f0c8-4788-9381-6f5b4819fc35',hoja:'283b41cd-113c-4e98-9f07-79549b8c927e',sumidad:'d0da4ef8-5def-45f3-8697-07b6242c8cf2'},
+  brot:'tardía',env:'tardía',hoja:'Grande, pentagonal, <b>7 lóbulos</b>; seno peciolar en V, superpuesto',racimo:'Piramidal, 2–3 alas, muy largo, compacidad media',rf:'pir',alas:2.5,comp:.6,
+  baya:'Elíptica, ~19 × 17 mm, verde-amarilla; pulpa blanda',L:19,W:17,bc:'#d3d27f',sabor:'Sin sabor particular',porte:'<b>Rastrero</b>; pámpano verde',
+  sin:'Beba, Bevan, Calop, Colgariega, Valencí blanco',
+  notas:['En Gran Canaria se la llama popularmente <b>«Brevala»</b>.','Destaca su aptitud como <b>uva de mesa</b>: muy vigorosa, productiva y de vendimia tardía.','Tiene escaso interés enológico.'],
+  finca:'2 cepas. Variedad tradicional, hoy muy escasa; autorizada en la DO Lanzarote.'},
+ {k:'brevn',n:'Breval negro',c:'t',cep:2,col:'#8a5a7a',id:24,
+  img:{racimo:'264f8b75-3045-4dbe-8aa1-17e9bd6a8ba1',baya:'a56a7d10-a33d-4b71-a402-e501e928ac3b',hoja:'1532c32b-ebe2-4c92-a322-570565f4f6e7',sumidad:'3be32b2d-bc8c-4034-b33f-4d65d8ece976'},
+  brot:null,env:null,hoja:'Sin descripción en la ficha',racimo:'Sin descripción en la ficha',rf:'con',alas:1.5,comp:.6,
+  baya:'Sin descripción (ver fotos): piel oscura',L:null,W:null,bc:'#3a2238',sabor:'—',porte:'—',
+  sin:'—',
+  notas:['La muestra del catálogo procede de <b>Lanzarote</b>.','Su ficha todavía no tiene descripción escrita: ¡obsérvala tú en la finca y completa sus caracteres!'],
+  finca:'2 cepas. Tradicional canaria y muy escasa.'},
+ {k:'diego',n:'Diego (Vijariego blanco)',c:'b',cep:1,col:'#f2ead0',id:60,
+  img:{racimo:'b15b2865-0e14-4410-aae3-c6dd91e9f185',baya:'9f6b27dc-31ad-4710-a023-11f4a060c6d8',hoja:'065c1d8c-fe8e-4d76-bbfb-00f0c4bfbb48',sumidad:'3497c655-ccb6-4eab-9292-2e2d338a9a50'},
+  brot:'media',env:'tardía',hoja:'Mediana, cuneiforme, 5 lóbulos, bordes hacia el envés; seno en lira, abierto',racimo:'Piramidal, 1 ala, mediano, <b>muy compacto</b>',rf:'pir',alas:1,comp:.95,
+  baya:'Ovoide, ~21 × 18 mm, verde-amarilla; pulpa ligeramente dura',L:21,W:18,bc:'#d4d58a',sabor:'Sin sabor particular',porte:'Semierguido; pámpano verde con rayas rojas',
+  sin:'Vijiriega común',
+  notas:['<b>La Palma y Lanzarote</b> son las islas que mejor la conservan.','Destaca por su <b>acidez elevada</b>, mucho ácido málico y pH bajo.','Necesita mucho calor acumulado para madurar.'],
+  finca:'1 cepa. En Lanzarote recibe el nombre de Diego.'}];
+V.forEach(v=>{v.src=t=>IMG+v.id+'/images/'+v.img[t]+'.jpg'});
+
+/* navegación */
+const links=$$('#topnav a');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));const on=links.find(a=>a.classList.contains('on'));if(on)on.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section.sec').forEach(s=>io.observe(s));
+addEventListener('scroll',()=>{const h=document.documentElement;$('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+
+/* ---------- gráfico de cuadros ---------- */
+(function(){
+  const order=V.slice().sort((a,b)=>b.cep-a.cep);let html='';order.forEach(v=>{for(let i=0;i<v.cep;i++)html+=`<i data-k="${v.k}" style="background:${v.col}"></i>`});html+='<i class="q" data-k="q" title="¿cepa 671?"></i>';
+  $('#waffle').innerHTML=html;
+  $('#legend').innerHTML=order.map(v=>`<button data-k="${v.k}"><s style="background:${v.col}"></s>${v.n.replace(' (Vijariego blanco)','')} <b>${v.cep}</b></button>`).join('')+`<button data-k="q"><s class="q" style="background:repeating-linear-gradient(45deg,#c9f0dc,#c9f0dc 2px,#24211e 2px,#24211e 4px)"></s>¿? <b>1</b></button>`;
+  const base='Sumando las cifras del cartel salen <b>670</b> cepas, pero el total indicado es <b>671</b>. ¿Dónde está la que falta? Compruébalo en campo.';$('#wTxt').innerHTML=base;
+  let cur=null;$$('#legend button').forEach(b=>b.onclick=()=>{cur=cur===b.dataset.k?null:b.dataset.k;$$('#legend button').forEach(x=>x.classList.toggle('on',x.dataset.k===cur));$$('#waffle i').forEach(i=>i.classList.toggle('dim',!!cur&&i.dataset.k!==cur));
+    const v=V.find(x=>x.k===cur);$('#wTxt').innerHTML=v?`<b>${v.n}</b>: ${v.cep} cepas, el ${(v.cep/671*100).toFixed(1).replace('.',',')} % de la finca. ${v.finca}`:base});
+})();
+
+/* ---------- fichas ---------- */
+function photosOf(v){return v.img}
+function ficha(v){const p=photosOf(v);const T=['racimo','baya','hoja','sumidad'],L={racimo:'Racimo',baya:'Baya',hoja:'Hoja adulta',sumidad:'Sumidad'};
+  $('#ficha').innerHTML=`<div class="gal"><div id="mainPh" class="main">${ph(IMG+v.id+'/images/'+p.racimo+'.jpg','Racimo de '+v.n,'')}</div><div class="thumbs">${T.map((t,i)=>`<button data-t="${t}" class="${i?'':'on'}" aria-label="${L[t]}">${ph(IMG+v.id+'/images/'+p[t]+'.jpg',L[t]+' de '+v.n,t==='racimo'?'':'contain')}<span>${L[t]}</span></button>`).join('')}</div><p class="credit" style="margin-top:6px">Fotos: <a href="${FICHA+v.id}" target="_blank" rel="noopener">ficha de ${v.n} en Vitis Canarias</a>.</p></div>
+  <div class="card"><span class="pill ${v.c}">${v.c==='b'?'Blanca':'Tinta'}</span><span class="pill">${v.cep} ${v.cep===1?'cepa':'cepas'} en la finca</span><h3 style="font-size:1.6rem;margin-top:8px">${v.n}</h3>
+  <dl class="traits"><dt>Sinonimias</dt><dd>${v.sin}</dd><dt>Brotación</dt><dd>${v.brot||'—'}</dd><dt>Envero</dt><dd>${v.env||'—'}</dd><dt>Pámpano</dt><dd>${v.porte}</dd><dt>Hoja</dt><dd>${v.hoja}</dd><dt>Racimo</dt><dd>${v.racimo}</dd><dt>Baya</dt><dd>${v.baya}</dd><dt>Sabor</dt><dd>${v.sabor}</dd></dl>
+  <h3 style="margin-top:16px">Interés y curiosidades</h3><ul style="margin:0;padding-left:1.2em">${v.notas.map(n=>`<li>${n}</li>`).join('')}</ul>
+  <div class="note" style="margin-bottom:0">📍 <b>En la Finca Diama:</b> ${v.finca}</div></div>`;
+  $$('#ficha .thumbs button').forEach(b=>b.onclick=()=>{$$('#ficha .thumbs button').forEach(x=>x.classList.toggle('on',x===b));const t=b.dataset.t;$('#mainPh').innerHTML=ph(IMG+v.id+'/images/'+p[t]+'.jpg',L[t]+' de '+v.n,t==='racimo'?'':'contain')})}
+$('#cards').innerHTML=V.map(v=>`<button class="vcard" data-k="${v.k}" data-c="${v.c}">${ph(IMG+v.id+'/images/'+photosOf(v).racimo+'.jpg','Racimo de '+v.n)}<div class="t"><h4>${v.n}</h4><small>${v.c==='b'?'Blanca':'Tinta'} · ${v.cep} ${v.cep===1?'cepa':'cepas'}</small></div></button>`).join('');
+$$('#cards .vcard').forEach(b=>b.onclick=()=>{$$('#cards .vcard').forEach(x=>x.classList.toggle('on',x===b));ficha(V.find(v=>v.k===b.dataset.k));if(innerWidth<860)$('#ficha').scrollIntoView({behavior:'smooth',block:'start'})});
+segInit('#colSeg',b=>$$('#cards .vcard').forEach(c=>c.hidden=b.dataset.c!=='all'&&c.dataset.c!==b.dataset.c));
+$$('#cards .vcard')[0].click();
+
+/* ---------- bayas a escala ---------- */
+(function(){const S=$('#berrySvg'),k=4.2,vs=V.filter(v=>v.L).sort((a,b)=>a.L*a.W-b.L*b.W);let o='<rect width="900" height="260" fill="#fffdf8"/>';const gap=900/vs.length;
+  vs.forEach((v,i)=>{const cx=gap*(i+.5),cy=120;o+=`<g class="b" data-k="${v.k}" style="cursor:pointer"><ellipse cx="${cx}" cy="${cy}" rx="${v.W*k/2}" ry="${v.L*k/2}" fill="${v.bc}" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/><ellipse cx="${cx-v.W*k*.17}" cy="${cy-v.L*k*.2}" rx="${v.W*k*.1}" ry="${v.L*k*.07}" fill="#fff" opacity=".45"/><text x="${cx}" y="${cy+v.L*k/2+22}" text-anchor="middle" font-size="13" font-weight="800" fill="#24211e">${v.n.replace(' (Vijariego blanco)','').replace('Moscatel de Alejandría','Moscatel Alej.')}</text><text x="${cx}" y="${cy+v.L*k/2+40}" text-anchor="middle" font-size="12" fill="#6f685e">${v.L}${v.W!==v.L?' × '+v.W:''} mm</text></g>`});
+  o+=`<g transform="translate(20,236)"><line x1="0" y1="0" x2="${10*k}" y2="0" stroke="#24211e" stroke-width="3"/><text x="${10*k+6}" y="4" font-size="11" font-weight="800" fill="#24211e">1 cm</text></g>`;
+  S.innerHTML=o;const f=k=>{const v=V.find(x=>x.k===k);$('#berryTxt').innerHTML=`${v.n}: ${v.baya}. Sabor: ${v.sabor.toLowerCase()}.`};$$('#berrySvg .b').forEach(g=>{g.onmouseenter=()=>f(g.dataset.k);g.onclick=()=>f(g.dataset.k)});f('moscn');
+  $('#berryTxt').insertAdjacentHTML('afterend','<p class="credit" style="margin:.3em 0 0">El Breval negro no aparece porque su ficha no indica medidas.</p>');
+})();
+
+/* ---------- fenología ---------- */
+(function(){const S=$('#feno');const X={media:290,tardía:400};let o='<rect width="520" height="370" fill="#fffdf8"/>';
+  o+=`<text x="290" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#24211e">media</text><text x="400" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#24211e">tardía</text>`;
+  o+=`<line x1="290" y1="28" x2="290" y2="335" stroke="#ddd5c5" stroke-dasharray="4 4"/><line x1="400" y1="28" x2="400" y2="335" stroke="#ddd5c5" stroke-dasharray="4 4"/>`;
+  V.forEach((v,i)=>{const y=48+i*36;o+=`<text x="10" y="${y+5}" font-size="13" font-weight="700" fill="#24211e">${v.n.replace(' (Vijariego blanco)','')}</text>`;
+    if(v.brot){o+=`<circle cx="${X[v.brot]-14}" cy="${y}" r="9" fill="#7cb342"><title>Brotación ${v.brot}</title></circle>`}
+    if(v.env){o+=`<rect x="${X[v.env]+5}" y="${y-9}" width="18" height="18" rx="4" fill="${v.c==='t'?'#5b2350':'#d6d36a'}" stroke="#24211e" stroke-width=".8"><title>Envero ${v.env}</title></rect>`}
+    if(!v.brot)o+=`<text x="345" y="${y+5}" text-anchor="middle" font-size="12" font-style="italic" fill="#6f685e">sin datos en la ficha</text>`});
+  o+=`<g transform="translate(10,360)" font-size="11" font-weight="700" fill="#24211e"><circle cx="6" cy="-4" r="6" fill="#7cb342"/><text x="16" y="0">brotación</text><rect x="90" y="-10" width="12" height="12" rx="3" fill="#d6d36a" stroke="#24211e" stroke-width=".8"/><text x="108" y="0">envero</text></g>`;
+  S.innerHTML=o})();
+
+/* ---------- racimo ---------- */
+(function(){$('#rSel').innerHTML=V.map(v=>`<option value="${v.k}">${v.n}</option>`).join('');
+  function draw(){const v=V.find(x=>x.k===$('#rSel').value);let o='<rect width="300" height="300" fill="#fffdf8"/><path d="M150,10 v28" stroke="#6b5a2a" stroke-width="4"/>';
+    const rows=v.rf==='pir'?[9,8,7,6,5,4,3,2,1]:[7,7,6,5,4,3,2,1],r=v.comp>.85?9:v.comp>.5?10:11,sp=v.comp>.85?16:v.comp>.5?19:22;
+    rows.forEach((n,i)=>{for(let j=0;j<n;j++)o+=`<circle cx="${150+(j-(n-1)/2)*sp}" cy="${48+i*sp*.92}" r="${r}" fill="${v.bc}" stroke="rgba(0,0,0,.2)"/>`});
+    const al=Math.round(v.alas),top=rows[0]*sp/2;for(let a=0;a<al;a++){const side=a%2?1:-1,sx=150+side*top*.7,sy=48+Math.floor(a/2)*sp,x=150+side*(top+r*2.2),y=sy+18;o+=`<path d="M${sx},${sy} Q${x},${sy-6} ${x},${y-8}" stroke="#6b5a2a" stroke-width="2.5" fill="none"/>`;for(let q=0;q<4;q++)o+=`<circle cx="${x+side*((q%2)*r*1.4)}" cy="${y+q*r*1.6}" r="${r*.9}" fill="${v.bc}" stroke="rgba(0,0,0,.2)"/>`}
+    $('#rSvg').innerHTML=o;$('#rTxt').innerHTML=v.racimo+'.'}
+  $('#rSel').onchange=draw;draw()})();
+
+/* ---------- comparador ---------- */
+(function(){const opts=V.map(v=>`<option value="${v.k}">${v.n}</option>`).join('');$('#cA').innerHTML=opts;$('#cB').innerHTML=opts;$('#cA').value='mosca';$('#cB').value='moscn';
+  function upd(){const a=V.find(v=>v.k===$('#cA').value),b=V.find(v=>v.k===$('#cB').value);
+    $('#cPhotos').innerHTML=[a,b].map(v=>`<div class="card" style="padding:10px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="aspect-ratio:4/5">${ph(IMG+v.id+'/images/'+photosOf(v).racimo+'.jpg','Racimo de '+v.n)}</div><div style="aspect-ratio:4/5">${ph(IMG+v.id+'/images/'+photosOf(v).hoja+'.jpg','Hoja de '+v.n,'contain')}</div></div><h3 style="margin:8px 0 0">${v.n}</h3></div>`).join('');
+    $$('#cPhotos .ph').forEach(p=>p.style.height='100%');
+    const rows=[['Color',v=>v.c==='b'?'Blanca':'Tinta'],['Cepas en la finca',v=>v.cep],['Sinonimias',v=>v.sin],['Brotación',v=>v.brot||'—'],['Envero',v=>v.env||'—'],['Pámpano',v=>v.porte],['Hoja',v=>v.hoja],['Racimo',v=>v.racimo],['Baya',v=>v.baya],['Sabor',v=>v.sabor]];
+    $('#cTable').innerHTML=`<tr><th>Carácter</th><th>${a.n}</th><th>${b.n}</th></tr>`+rows.map(r=>{const x=r[1](a),y=r[1](b);return `<tr><td>${r[0]}</td><td${x!==y?' style="background:#fbf3dc"':''}>${x}</td><td${x!==y?' style="background:#fbf3dc"':''}>${y}</td></tr>`}).join('');}
+  $('#cA').onchange=upd;$('#cB').onchange=upd;upd()})();
+
+/* ---------- clave dicotómica ---------- */
+(function(){
+  const K={start:{q:'¿De qué color es la baya madura?',o:[['🟡 Verde-amarilla (blanca)','b1'],['🟣 Oscura: azul-negra o violeta (tinta)','t1']]},
+   t1:{q:'¿La baya tiene sabor a moscatel y es muy grande (más de 2 cm)?',o:[['Sí','=moscn'],['No','t2']]},
+   t2:{q:'¿Es una cepa común, con racimo largo y compacto de bayas esféricas azul-negras?',o:[['Sí, es de las más abundantes','=listn'],['No, es de las rarezas de la finca','=brevn']]},
+   b1:{q:'¿La baya sabe claramente a moscatel?',o:[['Sí','=mosca'],['No','b2']]},
+   b2:{q:'¿La hoja adulta tiene 7 lóbulos y el pámpano crece rastrero?',o:[['Sí','=brevb'],['No: 5 lóbulos','b3']]},
+   b3:{q:'¿La baya es ovoide y grande (~21 mm) en un racimo muy compacto?',o:[['Sí','=diego'],['No: baya esférica de 16–17 mm','b4']]},
+   b4:{q:'¿Cómo son la hoja y el racimo?',o:[['Hoja grande y pentagonal con nervios rojos en la base; racimo muy largo con pedúnculo largo','=listb'],['Hoja mediana y orbicular, seno peciolar en lira; baya pequeña (~16 mm)','=malv']]}};
+  let trail=[];
+  function go(id){const el=$('#key');if(id.startsWith('=')){const v=V.find(x=>x.k===id.slice(1));el.innerHTML=`<div class="trail">${trail.map(t=>`<span>${t}</span>`).join('')}</div><span class="pill ${v.c}">Resultado</span><h3 style="font-size:1.6rem;margin:8px 0">${v.n}</h3><div style="aspect-ratio:4/3;max-height:300px">${ph(IMG+v.id+'/images/'+photosOf(v).racimo+'.jpg','Racimo de '+v.n)}</div><p style="margin:10px 0">${v.finca}</p><div class="row"><button class="btn sm" id="kR">↺ Empezar de nuevo</button><button class="btn sm ghost" id="kF">Ver su ficha</button></div>`;$$('#key .ph').forEach(p=>p.style.height='100%');
+      $('#kR').onclick=()=>{trail=[];go('start')};$('#kF').onclick=()=>{$(`#cards .vcard[data-k="${v.k}"]`).click();$('#fichas').scrollIntoView({behavior:'smooth'})};return}
+    const n=K[id];el.innerHTML=`<div class="trail">${trail.map(t=>`<span>${t}</span>`).join('')}</div><p class="step">${n.q}</p><div class="opts">${n.o.map((o,i)=>`<button data-i="${i}">${o[0]}</button>`).join('')}</div>`;
+    $$('#key .opts button').forEach(b=>b.onclick=()=>{const o=n.o[+b.dataset.i];trail.push(o[0].replace(/^[^\wÁÉÍÓÚáéíóúñ]+\s*/,'').slice(0,40));go(o[1])})}
+  go('start')})();
+
+/* ---------- juego de fotos ---------- */
+(function(){let mode='all',round=0,score=0,cur=null;const N=10,TYPES=['racimo','baya','hoja','sumidad'],LB={racimo:'Racimo',baya:'Baya',hoja:'Hoja',sumidad:'Sumidad'};
+  function next(){const el=$('#pq');if(round>=N){el.innerHTML=`<div class="score">${score} / ${N}</div><p style="text-align:center;font-weight:700">${score>=9?'🏆 ¡Ojo de ampelógrafo!':score>=6?'🍇 ¡Muy bien! Repasa las fichas de las que fallaste.':'📚 Vuelve a mirar las fichas y repite.'}</p><div style="text-align:center"><button class="btn" id="pqR">↺ Jugar otra vez</button></div>`;$('#pqR').onclick=()=>{round=0;score=0;next()};return}
+    const v=V[Math.floor(Math.random()*V.length)],t=mode==='all'?TYPES[Math.floor(Math.random()*4)]:mode;const p=photosOf(v);
+    const others=V.filter(x=>x!==v).sort(()=>Math.random()-.5).slice(0,3);const opts=[v,...others].sort(()=>Math.random()-.5);cur=v;
+    el.innerHTML=`<div class="row" style="justify-content:space-between"><span class="pill">${LB[t]}</span><span style="font-weight:800">Foto ${round+1} de ${N} · ✅ ${score}</span></div><div style="aspect-ratio:4/3;margin-top:8px">${ph(IMG+v.id+'/images/'+p[t]+'.jpg',LB[t]+' de una variedad',t==='racimo'?'':'contain')}</div><div class="opts">${opts.map(o=>`<button data-k="${o.k}">${o.n}</button>`).join('')}</div><p id="pqMsg" style="font-weight:700;min-height:24px;margin:10px 0 0"></p>`;
+    $$('#pq .ph').forEach(x=>x.style.height='100%');
+    $$('#pq .opts button').forEach(b=>b.onclick=()=>{const ok=b.dataset.k===cur.k;if(ok)score++;$$('#pq .opts button').forEach(x=>{x.disabled=true;if(x.dataset.k===cur.k)x.classList.add('ok')});if(!ok)b.classList.add('ko');
+      $('#pqMsg').innerHTML=(ok?'✅ ¡Correcto! ':'❌ Era <b>'+cur.n+'</b>. ')+`<button class="btn sm" id="pqN" style="margin-left:6px">Siguiente →</button>`;$('#pqN').onclick=()=>{round++;next()}})}
+  segInit('#pqMode',b=>{mode=b.dataset.m;round=0;score=0;next()});next()})();
+
+/* ---------- cuaderno de campo ---------- */
+(function(){const T=['Cuenta las cepas de cada variedad en el cartel y busca dónde está la diferencia entre 670 y 671.','Compara la hoja del Moscatel de Alejandría (pequeña) con la del Moscatel negro (grande y cuneiforme).','Localiza la única cepa de Diego (Vijariego blanco) y fíjate en lo compacto de su racimo.','Observa dónde están plantadas las moscateles: ¿en chabocos, zanjas o junto a ellos?','Mide con una regla una baya de Malvasía volcánica y otra de Moscatel: ¿cuánto se diferencian?','Mira el porte del pámpano del Breval blanco: ¿es rastrero?','Fotografía la sumidad de dos variedades distintas y compárala con las fotos de la lección.','Observa el Breval negro y anota tú sus caracteres: hoja, racimo, baya.'];
+  let st=[];try{st=JSON.parse(localStorage.getItem('diama-checks')||'[]')}catch(e){st=[]}
+  $('#checks').innerHTML=T.map((t,i)=>`<label class="${st[i]?'done':''}"><input type="checkbox" id="ck${i}" ${st[i]?'checked':''}> <span>${t}</span></label>`).join('');
+  function cnt(){$('#ckCount').textContent=st.filter(Boolean).length+' / '+T.length}
+  T.forEach((_,i)=>$('#ck'+i).onchange=e=>{st[i]=e.target.checked;e.target.parentNode.classList.toggle('done',st[i]);try{localStorage.setItem('diama-checks',JSON.stringify(st))}catch(err){}cnt()});cnt()})();
+
+/* ---------- quiz ---------- */
+const Q=[
+ {q:'¿Cuál es la variedad más abundante en la Finca Diama?',o:['Malvasía volcánica','Moscatel de Alejandría','Listán negro','Listán blanco'],a:1,e:'286 cepas de Moscatel de Alejandría, frente a 175 de Malvasía volcánica.'},
+ {q:'Según los estudios moleculares, la Malvasía volcánica sería un cruce de…',o:['Listán blanco × Moscatel','Malvasía aromática × Marmajuelo','Vijariego × Listán negro','No tiene parentales conocidos'],a:1,e:'Es la hipótesis que recoge la ficha de Vitis Canarias.'},
+ {q:'¿Qué tipo de poda admite la Malvasía volcánica?',o:['Solo poda larga','Poda corta (3–4 yemas)','No se poda','Solo poda en verde'],a:1,e:'Sus primeras yemas son fértiles; la Malvasía aromática, en cambio, exige poda larga.'},
+ {q:'¿Con qué variedad se identifica el Listán blanco?',o:['Palomino fino','Airén','Garnacha blanca','Malvar'],a:0,e:'El Listán blanco es sinónimo de Palomino fino.'},
+ {q:'¿Cuál es el principal punto débil del Listán negro?',o:['Brota muy tarde','La compacidad del racimo, que favorece la podredumbre','Produce muy poco','No tolera el calor'],a:1,e:'En suelos fértiles o con exceso de agua sus racimos compactos se pudren.'},
+ {q:'¿Qué variedad tiene la baya más grande de las ocho?',o:['Malvasía volcánica','Listán blanco','Moscatel negro','Diego'],a:2,e:'Unos 24 × 20 mm, de color rojo-violeta oscuro.'},
+ {q:'¿Qué variedad destaca por su acidez elevada y pH bajo?',o:['Moscatel de Alejandría','Diego (Vijariego blanco)','Breval blanco','Listán blanco'],a:1,e:'Mucho ácido málico y pH bajo; La Palma y Lanzarote la conservan mejor.'},
+ {q:'¿Qué variedad tiene la hoja con 7 lóbulos y el pámpano rastrero?',o:['Breval blanco','Malvasía volcánica','Listán negro','Moscatel negro'],a:0,e:'Además es muy vigorosa y tiene aptitud de mesa.'},
+ {q:'¿Con qué otro nombre se conoce el Moscatel negro?',o:['Moscatel de grano menudo','Moscatel de Hamburgo','Moscatel de Málaga','Breval'],a:1,e:'Su vocación principal es la uva de mesa.'},
+ {q:'¿Qué hace la Moscatel de Alejandría en Canarias que obliga a vendimiar varias veces?',o:['Brota de forma poco homogénea','Madura antes que ninguna','Pierde las hojas en verano','Se poda dos veces'],a:0,e:'Su brotación heterogénea hace que la uva no madure toda a la vez.'},
+ {q:'¿Qué plaga o enfermedad llegó a Canarias en 1852 y redujo la diversidad de variedades?',o:['Filoxera','Oídio','Mildiu','Botritis'],a:1,e:'El oídio. En Lanzarote solo queda una planta de Moscatel de grano menudo.'},
+ {q:'En Lanzarote, el Vijariego blanco se llama…',o:['Burrablanca','Diego','Brevala','Almuñeco'],a:1,e:'Almuñeco es un nombre del Listán negro y Brevala, del Breval blanco.'}
+];
+let qi=0,sc=0;
+function renderQ(){const box=$('#quizBox');
+  if(qi>=Q.length){box.innerHTML=`<div class="score">${sc} / ${Q.length}</div><p style="text-align:center;font-size:1.1rem">${sc>=11?'🏆 ¡Preparado para la visita!':sc>=8?'🍇 ¡Muy bien! Repasa los fallos.':'📚 Vuelve a las fichas y repite el test.'}</p><div style="text-align:center"><button class="btn" id="qr">↺ Repetir</button></div>`;$('#qr').onclick=()=>{qi=0;sc=0;renderQ()};return}
+  const q=Q[qi];box.innerHTML=`<div class="qbar"><div style="width:${qi/Q.length*100}%"></div></div><p style="color:var(--muted);font-weight:800;margin:0">Pregunta ${qi+1} de ${Q.length} · Aciertos: ${sc}</p><h3>${q.q}</h3>${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}<div class="fb" id="fb"></div>`;
+  $$('.opt',box).forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a;if(ok)sc++;$$('.opt',box).forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add('ok')});if(!ok)b.classList.add('ko');
+    const fb=$('#fb');fb.className='fb show';fb.style.background=ok?'#e3f1e7':'#f8e0d6';fb.innerHTML=(ok?'✅ <b>¡Correcto!</b> ':'❌ <b>No exactamente.</b> ')+q.e+'<div style="margin-top:10px"><button class="btn o" id="qn">'+(qi<Q.length-1?'Siguiente →':'Ver resultado')+'</button></div>';$('#qn').onclick=()=>{qi++;renderQ()}})}
+renderQ();
+
+/* ---------- glosario ---------- */
+const G=[['Ampelografía','Ciencia que describe e identifica las variedades de vid por sus caracteres.'],['Sumidad','Extremo del pámpano en crecimiento, con las hojas más jóvenes.'],['Seno peciolar','Hendidura de la hoja donde se inserta el peciolo: en V, en U, en lira…'],['Alas del racimo','Ramificaciones laterales que salen de la parte alta del racimo.'],['Compacidad','Lo apretadas que están las bayas en el racimo: suelto, medio o compacto.'],['Hoja cuneiforme','Hoja en forma de cuña, más ancha arriba que en la base.'],['Hoja orbicular','Hoja de contorno casi redondo.'],['Sinonimia','Otro nombre con el que se conoce la misma variedad en otro lugar.'],['Uva de mesa','Uva destinada a consumirse en fresco, no a vinificar.'],['Pie franco','Vid cultivada sobre sus propias raíces, sin portainjerto.'],['Variedad autorizada','Variedad que la DO permite usar para elaborar sus vinos.'],['Envero','Cambio de color y ablandamiento de la baya al empezar a madurar.']];
+$('#flips').innerHTML=G.map(g=>`<button class="flip" aria-label="${g[0]}"><div class="inn"><div class="fc">${g[0]}</div><div class="bc">${g[1]}</div></div></button>`).join('');
+$$('.flip').forEach(f=>f.onclick=()=>f.classList.toggle('on'));
+})();
+</script>
+</body>
+</html>
